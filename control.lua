@@ -1,4 +1,3 @@
-local lastIdx = 0
 local entities = {}
 local selectedEntry = nil
 
@@ -85,24 +84,20 @@ local function onTick(e)
 end
 
 function onBuiltEntity(e)
-    local player = game.players[e.player_index]
     if e.created_entity then
         local entity = e.created_entity
         if entity.name == "signal-splitter-combinator" then
-            lastIdx = lastIdx + 1
             local entityEntry = {
-                signalIdx = lastIdx,
+                signalIdx = 1,
                 entity = entity
             }
             table.insert(entities, entityEntry)
             Save()
         end
     end
-    --ShowMessage(player, serpent.block(entities))
 end
 
 function onMinedEntity(e)
-    local player = game.players[e.player_index]
     if e.entity then
         local entity = e.entity
         if entity.name == "signal-splitter-combinator" then
