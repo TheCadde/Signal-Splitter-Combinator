@@ -133,7 +133,7 @@ end
 
 function onGuiOpened(e)
     local player = game.players[e.player_index]
-    if player.opened and player.opened.name == "signal-splitter-combinator" then
+    if e.entity and player.opened and player.opened.name == "signal-splitter-combinator" then
         player.opened = nil 
         CloseGUI(player)
         
